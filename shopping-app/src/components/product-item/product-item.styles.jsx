@@ -27,9 +27,9 @@ export const CartImage = styled.div`
 
 export const CartDetail = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
+  // display: flex;
+  // justify-content: space-between;
+  // margin-top: 1.5rem;
   padding: 0 1rem;
 
   p {

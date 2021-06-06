@@ -23,7 +23,12 @@ export const CartAction = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  p {
+    margin-top: 0.75rem;
+  }
 `;
+
 export const ButtonCart = styled(Button)`
   padding: 0.2rem 1rem;
   margin: 0.2rem;

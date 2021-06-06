@@ -19,9 +19,9 @@ const CartItem = ({ item }) => {
         <ButtonCart onClick={() => deleteFromCart(item)}>Delete</ButtonCart>
       </div>
       <CartAction>
-        <ButtonCart onClick={() => addToCart(item)}>&lsaquo;</ButtonCart>
+        <ButtonCart onClick={() => removeFromCart(item)}>-</ButtonCart>
         <p>{item.quantity}</p>
-        <ButtonCart onClick={() => removeFromCart(item)}>&rsaquo;</ButtonCart>
+        <ButtonCart onClick={() => addToCart(item)}>+</ButtonCart>
       </CartAction>
     </CartItemContainer>
   );

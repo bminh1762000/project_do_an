@@ -9,15 +9,15 @@ import UserProvider from "./context/user";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
+    <BrowserRouter>
       <CartProvider>
-        <ProductProvider>
-          <BrowserRouter>
+        <UserProvider>
+          <ProductProvider>
             <App />
-          </BrowserRouter>
-        </ProductProvider>
+          </ProductProvider>
+        </UserProvider>
       </CartProvider>
-    </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

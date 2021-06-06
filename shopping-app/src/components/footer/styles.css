@@ -1,0 +1,17 @@
+.positive{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.positive-item{
+  padding: 1rem;
+  list-style-type: none;
+
+  text-transform: uppercase;
+  font-size: 1.735rem;
+  font-weight: 600;
+}
+
+.positive::before{
+  
+}

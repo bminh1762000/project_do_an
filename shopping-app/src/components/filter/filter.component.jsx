@@ -14,7 +14,7 @@ const Filter = () => {
       <FilterForm>
         <div>
           <div className="form-group">
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category">Hãng</label>
             <select
               className="form-control"
               name="category"
@@ -23,13 +23,13 @@ const Filter = () => {
               value={category}
             >
               <option value="all">All</option>
-              <option value="men">Mens</option>
-              <option value="women">Women</option>
-              <option value="jacket">Jackets</option>
+              <option value="hp">HP</option>
+              <option value="lenovo">Lenovo</option>
+              <option value="dell">Dell</option>
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category">Sắp xếp</label>
             <select
               className="form-control"
               name="sort"
@@ -37,8 +37,8 @@ const Filter = () => {
               onChange={changeFilter}
               value={sort}
             >
-              <option value="asc">Asc</option>
-              <option value="desc">Desc</option>
+              <option value="asc">Tăng dần</option>
+              <option value="desc">Giảm dần</option>
             </select>
           </div>
           <div className="form-group">
@@ -73,27 +73,27 @@ const Filter = () => {
               checked={price === 0}
               onChange={changeFilter}
             />
-            $0 - $20
+            10000000đ - 15000000đ
           </label>
           <label>
             <input
               type="radio"
               name="price"
-              value="20"
-              checked={price === 20}
+              value="10000000"
+              checked={price === 10000000}
               onChange={changeFilter}
             />
-            $20 - $40
+            15000000đ - 20000000đ
           </label>
           <label>
             <input
               type="radio"
               name="price"
-              value="40"
-              checked={price === 40}
+              value="20000000"
+              checked={price === 20000000}
               onChange={changeFilter}
             />
-            Over $40
+            20000000đ trở lên
           </label>
         </PriceGroup>
       </FilterForm>

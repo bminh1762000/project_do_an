@@ -18,11 +18,13 @@ const ProductList = () => {
     <ProductListContainer>
       <Filter />
       <ListContainer>
-        {products
-          ? products.map((product) => {
-              return <ProductItem key={product._id} product={product} />;
-            })
-          : null}
+        {products.length ? (
+          products.map((product) => {
+            return <ProductItem key={product._id} product={product} />;
+          })
+        ) : (
+          <p>No products</p>
+        )}
       </ListContainer>
       <Pagination />
     </ProductListContainer>

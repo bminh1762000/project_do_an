@@ -10,7 +10,7 @@ const ProductItem = ({ product: { title, imageUrl, price, _id }}) => {
       <CartImage imageUrl={imageUrl} />
       <CartDetail>
         <p className="title">{title}</p>
-        <p className="price">{price}$</p>
+        <p className="price">{price}đ</p>
       </CartDetail>
     </CartItemContainer>
   );

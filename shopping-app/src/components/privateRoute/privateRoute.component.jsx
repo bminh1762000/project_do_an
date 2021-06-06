@@ -8,10 +8,10 @@ const PrivateRoute = ({ children, ...otherProps }) => {
   return (
     <Route
       {...otherProps}
-      render={() => (user ? children : <Redirect to="/login" />)}
-    >
-      {children}
-    </Route>
+      render={() => {
+        return user.useId ? children : <Redirect to="/login"/>
+      }}
+    />
   );
 };
 

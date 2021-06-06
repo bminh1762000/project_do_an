@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Button from "../button/button.component";
 
@@ -6,17 +6,49 @@ import {
   ProductDetailContainer,
   DescriptionContainer,
 } from "./product-detail.styles";
-import { ProductContext } from "../../context/product";
 import { CartContext } from "../../context/cart";
+import { UserContext } from "../../context/user";
 
-const ProductDetail = ({ match }) => {
-  const { products: productData } = useContext(ProductContext);
+const ProductDetail = ({ match, history }) => {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { addToCart } = useContext(CartContext);
-  const productId = match.params.productId;
-  const product = productData.find(
-    (p) => p._id.toString() === productId.toString()
-  );
-  return product ? (
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    const productId = match.params.productId;
+    setLoading(true);
+    fetch(`http://localhost:8000/products/${productId}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        if (resData.error) {
+          throw new Error("Fetching product failed.");
+        }
+        setProduct(resData.product);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+      });
+    return () => {};
+  }, []);
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  return (
     <ProductDetailContainer>
       <img src={product.imageUrl} alt="Image Products" />
       <DescriptionContainer>
@@ -35,11 +67,15 @@ const ProductDetail = ({ match }) => {
           keffiyeh. Tofu seitan mlkshk, try-hard cray hella PBR&B kale chips
           bushwick umami salvia knausgaard four loko pork belly semiotics.
         </p>
-        <Button onClick={() => addToCart(product)}>Add to cart</Button>
+        <Button
+          onClick={() =>
+            user.userId ? addToCart(product) : history.push("/login")
+          }
+        >
+          Add to cart
+        </Button>
       </DescriptionContainer>
     </ProductDetailContainer>
-  ) : (
-    <h2>Product do not existing.</h2>
   );
 };
 

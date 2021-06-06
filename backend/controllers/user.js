@@ -56,7 +56,9 @@ exports.login = async (req, res, next) => {
       "somesupersecretsecret",
       { expiresIn: "1h" }
     );
-    res.status(200).json({ token: token, userId: user._id.toString() });
+    res
+      .status(200)
+      .json({ token: token, userId: user._id.toString(), role: user.role });
   } catch (err) {
     if (!err.status) {
       err.status = 500;

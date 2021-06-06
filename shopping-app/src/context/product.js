@@ -64,11 +64,11 @@ const ProductProvider = ({ children }) => {
     if (price !== "all") {
       newProducts = newProducts.filter((p) => {
         if (price === 0) {
-          return p.price < 20 && p.price >= 0;
-        } else if (price === 20) {
-          return p.price < 40 && p.price >= 20;
+          return p.price < 15000000 && p.price >= 10000000;
+        } else if (price === 10000000) {
+          return p.price < 10000000 && p.price >= 15000000;
         } else {
-          return p.price >= 40;
+          return p.price >= 20000000;
         }
       });
     }
